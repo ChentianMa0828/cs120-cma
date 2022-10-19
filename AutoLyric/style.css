@@ -1,0 +1,19 @@
+.auto_lyric{
+	width: 70%;
+	margin: 0 auto;
+	text-align: center;
+}
+.lyric_area{/*Lyrics display area*/
+	height: 300px; /*Height of lyric area*/
+	overflow: hidden; /*Hide the overshoot*/
+	margin-top: 15px;
+	width: 320px;
+	margin: 0 auto;
+}
+#lyric{/*The words list*/
+	line-height: 20px;/*Line height, which is used for the scroll distance of the lyrics*/
+	transition-duration: 600ms;/*rolling speed*/
+ }
+#lyric .lineHigh{/*highlight*/
+	color: red;
+}
