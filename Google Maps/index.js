@@ -1,3 +1,12 @@
+function watchWindowSize() {
+  var googleMap=document.getElementById('googleMap')
+  // Gets the width and height of the window, excluding the scroll bar
+  var clientHeight = document.documentElement.clientHeight;
+  googleMap.style.height=clientHeight+'px'
+  }
+  // Append the event listener function to the resize event of the window
+  window.addEventListener("resize", watchWindowSize);
+  watchWindowSize()
 // Center point coordinates
 var berlin = new google.maps.LatLng(42.352271, -71.05524200000001);
 // Vehicle coordinate list
