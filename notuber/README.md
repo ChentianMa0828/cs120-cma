@@ -41,4 +41,16 @@ optimization flow:
 2.· Reduce css code
 3.· Compressed javaScript files
 ```
+before optimization:
+file  | size  | time
+ ---- | ----- | ------  
+ index.html  | 415B | 7ms
+ style.css  | 49B | 7ms 
+ index.js  | 1.8kb | 7ms  
 
+after optimization:
+file  | size  | time
+ ---- | ----- | ------  
+ index.html  | 413B | 3ms
+ style.css  | 33B | 6ms 
+ index.min.js  | 1.2kb | 6ms 
