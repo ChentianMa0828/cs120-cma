@@ -16,5 +16,5 @@ Only my
 
 ### · How long to complete the implementation
 ```
-two hours
+2 hours + 4 hours + 4 hours
 ```
