@@ -1,0 +1,115 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        .center {
+            /* display: inline-block; */
+            margin: 0 auto;
+            width: 400px;
+        }
+        .grey{
+            background-color: gainsboro;
+        }
+        .li-css {
+            /* list-style:none; */
+            /* padding:0;
+            margin:0; */
+        }
+    </style>
+</head>
+<body>
+    <div><h2 class="center">Security Vulnerability Report</h2></div>
+    <div class="introduction">
+        <h3>Introduction</h3>
+        <div class="grey">
+            <p>This product is a ride-hailing service --both the client and server.</p>
+            <p>I have been hired as a security consultant to document and resolve the security and privacy issues of
+                a ride-hailing service</p> 
+        </div>
+    </div>
+    <div class="methodology">
+        <h3>Methodology</h3>
+        <div class="grey">
+            <ul>
+                <li>check the source code</li>
+                <li>test the web:"black box" testing and  "white box" testing</li>
+                <li>use the tool of Burp Suite, it has Burp Scanner function. it is mainly used to automatically detect various vulnerabilities in the web system</li>
+            </ul>
+        </div>
+    </div>
+    <div class="abstract-of-findings">
+        <h3>Abstract of Findings</h3>
+        <div class="grey">
+            <p>I find four security and privacy issues</p>
+            <ul class="li-css">
+                <li>Cors Cross Domain Vulnerability: If the target site is not configured properly and the domain of the request source is not strictly restricted, any source can be accessed.If a user clicks to trigger a malicious page, data will be stolen</li>
+                <li>XSS: A malicious attacker inserts malicious html code (js and other scripts) into a Web page. When a user browses the page, the inserted code is executed to achieve the special purpose of the malicious user</li>
+                <li>SQL injection: It refers to that the attacker destroys the structure of SQL query statements by injecting malicious SQL commands, so as to achieve the purpose of executing malicious SQL statements</li>
+                <li>Key parameters are not encrypted: username</li>
+            </ul>
+        </div>
+    </div>
+    <div class="issues-found">
+        <h3>Issues Found</h3>
+        <div  class="grey">
+            <div>
+                <h5>Cors Cross Domain Vulnerability</h5>
+                <ul>
+                    <li>Issue: Cors Cross Domain Vulnerability</li>
+                    <li>Location: "response.header("Access-Control-Allow-Origin", "*");"</li>
+                    <li>Severity of issue:  high</li>
+                    <li>Description of issue: from source code <img src="./cros.png" alt=""></li>
+                    <li>Proof of vulnerability: Send links to phishing websites to read users' data</li>
+                    <li>Resolution: Do not set the Access Control Allow Origin field to "*",Check the value of Origin field</li>
+                </ul>
+            </div>
+            <div>
+                <h5>XSS</h5>
+                <ul>
+                    <li>Issue: XSS</li>
+                    <li>Location: "INSERT INTO vehicles(username, lat, lng) VALUES ($1, $2, $3)"</li>
+                    <li>Severity of issue:  high</li>
+                    <li>Description of issue: from source code <img src="./XSS.png" alt=""></li>
+                    <li>Proof of vulnerability: A malicious attacker inserts malicious html code (js and other scripts) into a Web page. When a user browses the page, the inserted code is executed to achieve the special purpose of the malicious user</li>
+                    <li>Resolution: Detect all user input data, such as filtering "<", ">", "/" and other special characters that may cause script injection, filtering "script", "javascript" and other script keywords, or limiting the length of input data</li>
+                </ul>
+            </div>
+            <div>
+                <h5>SQL injection</h5>
+                <ul>
+                    <li>Issue: SQL injection</li>
+                    <li>Location: "INSERT INTO vehicles(username, lat, lng) VALUES ($1, $2, $3)"</li>
+                    <li>Severity of issue:  high</li>
+                    <li>Description of issue: from source code <img src="./SQL.png" alt=""></li>
+                    <li>Proof of vulnerability: ' OR 'x'='x</li>
+                    <li>Resolution:  Do not trust the data provided by the user, but verify the user input. The data can be submitted to the database only after the verification is passed.</li>
+                </ul>
+            </div>
+            <div>
+                <h5>Key parameters are not encrypte</h5>
+                <ul>
+                    <li>Issue: Key parameters are not encrypt</li>
+                    <li>Location: "var username = request.body.username;"</li>
+                    <li>Severity of issue:  medium</li>
+                    <li>Description of issue: from source code <img src="./encrypte.png" alt=""></li>
+                    <li>Proof of vulnerability: username are not encrypted</li>
+                    <li>Resolution: Encrypt important parameters before passing them in</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="conclusion">
+        <h3>Conclusion</h3>
+        <div class="grey">
+            <ul>
+                <li>First, account login and cookie verification.</li>
+                <li>Fix the discovered code vulnerability.</li>
+                <li>Perform security verification on database data operation</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
